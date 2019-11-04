@@ -11,12 +11,14 @@ import QuartzCore
 import SceneKit
 
 class GameViewController: UIViewController {
+    
+    private let scene = SCNScene()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // create a new scene
-        let scene = SCNScene()
+        // scene = SCNScene()
         
         // create and add a camera to the scene
         let cameraNode = SCNNode()
@@ -24,17 +26,8 @@ class GameViewController: UIViewController {
         scene.rootNode.addChildNode(cameraNode)
         
         // place the camera
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
-        
-        // create and add a light to the scene
-        let lightNode = SCNNode()
-        lightNode.light = SCNLight()
-        lightNode.light!.type = .omni
-        lightNode.light!.color = UIColor(red: 1, green: 0.95, blue: 0.8, alpha: 1)
-        lightNode.light!.intensity = 2000
-        
-        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-        scene.rootNode.addChildNode(lightNode)
+        cameraNode.position = SCNVector3(x: 0, y: 30, z: 0)
+        cameraNode.eulerAngles = SCNVector3(x: -Float.pi / 2, y: 0, z: 0)
         
         // create and add an ambient light to the scene
         let ambientLightNode = SCNNode()
@@ -60,25 +53,68 @@ class GameViewController: UIViewController {
         scnView.backgroundColor = UIColor.black
         
         // add a tap gesture recognizer
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        scnView.addGestureRecognizer(tapGesture)
+        // let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        // scnView.addGestureRecognizer(tapGesture)
         
-        // add a sphere
-//        let sphere = SCNSphere(radius: 10)
-//        let sphere_node = SCNNode(geometry: sphere)
-//        sphere_node.light = SCNLight()
-//        sphere_node.light!.type = .omni
-//        sphere_node.light!.color = UIColor(red: 1, green: 0.95, blue: 0.8, alpha: 1)
-//        sphere_node.light!.intensity = 2000
-//        sphere_node.position = SCNVector3(0, 50, 50)
-//        scene.rootNode.addChildNode(sphere_node)
+        let sun_geo = SCNSphere(radius: 2)
+        sun_geo.firstMaterial?.emission.contents = UIImage(named: "sun_texture.jpg")
+        sun_geo.segmentCount = 64
         
-        let sphere2 = SCNSphere(radius: 2)
-        let texture = UIImage(named: "earth_texture.png")
-        sphere2.firstMaterial?.diffuse.contents = texture
-        let sphere2_node = SCNNode(geometry: sphere2)
-        scene.rootNode.addChildNode(sphere2_node)
+        let sun = SCNNode(geometry: sun_geo)
+        sun.name = "sun"
+        scene.rootNode.addChildNode(sun)
         
+        sun.light = SCNLight()
+        sun.light!.type = .omni
+        sun.light!.color = UIColor(red: 1, green: 0.9, blue: 0.8, alpha: 1)
+        sun.light!.intensity = 2000
+        
+        createPlanetWithTrajectory(name: "mercury", radius: 0.66, trajectoryRadius: 4, content: UIImage(named: "mercury_texture.jpg"))
+        
+        createPlanetWithTrajectory(name: "venus", radius: 0.9, trajectoryRadius: 7, content: UIImage(named: "venus_texture.jpg"))
+        
+        createPlanetWithTrajectory(name: "earth", radius: 1, trajectoryRadius: 10, content: UIImage(named: "earth_texture.png"))
+        
+        createPlanetWithTrajectory(name: "mars", radius: 0.75, trajectoryRadius: 15, content: UIImage(named: "mars_texture.jpg"))
+        
+        createPlanetWithTrajectory(name: "jupiter", radius: 1.5, trajectoryRadius: 23, content: UIImage(named: "jupiter_texture.jpg"))
+        
+        createPlanetWithTrajectory(name: "pluto", radius: 0.25, trajectoryRadius: 30, content: UIImage(named: "pluto_texture.png"))
+    }
+    
+    func createPlanetWithTrajectory(name: String, radius: CGFloat, trajectoryRadius: CGFloat, content: Any? = nil) -> SCNNode {
+        let planet_shape = SCNSphere(radius: radius)
+        planet_shape.firstMaterial?.diffuse.contents = content
+        planet_shape.segmentCount = 64
+        
+        let planet_node = SCNNode(geometry: planet_shape)
+        planet_node.name = name
+        
+        planet_node.position = SCNVector3(x: 0, y: 0, z: -Float(trajectoryRadius))
+        
+        let wrapper_node = SCNNode()
+        wrapper_node.addChildNode(planet_node)
+        
+        scene.rootNode.addChildNode(wrapper_node)
+        
+        let traj_shape = SCNTube(innerRadius: trajectoryRadius - 0.05, outerRadius: trajectoryRadius, height: 0.05)
+        traj_shape.firstMaterial?.emission.contents = UIColor.white
+        traj_shape.radialSegmentCount = 64
+        
+        let traj_node = SCNNode(geometry: traj_shape)
+        scene.rootNode.addChildNode(traj_node)
+        
+        rotatePlanet(wrapper: wrapper_node, planet: planet_node, time: TimeInterval(trajectoryRadius))
+        
+        return wrapper_node
+    }
+    
+    func rotatePlanet(wrapper: SCNNode, planet: SCNNode, time: TimeInterval) {
+        let rotate = SCNAction.rotateBy(x: 0, y: 2 * CGFloat.pi, z: 0, duration: time)
+        rotate.timingMode = .linear
+        let forever = SCNAction.repeatForever(rotate)
+        wrapper.runAction(forever)
+        planet.runAction(forever)
     }
     
     @objc
