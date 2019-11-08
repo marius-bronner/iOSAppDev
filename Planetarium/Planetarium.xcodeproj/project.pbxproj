@@ -13,6 +13,13 @@
 		2C305A132370AECB00544F9B /* mercury_texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C305A102370AECB00544F9B /* mercury_texture.jpg */; };
 		2C305A142370AECB00544F9B /* venus_texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C305A112370AECB00544F9B /* venus_texture.jpg */; };
 		2C305A152370AECB00544F9B /* jupiter_texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C305A122370AECB00544F9B /* jupiter_texture.jpg */; };
+		2C52E1032371EEC30097E614 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C52E1022371EEC30097E614 /* placeholder.png */; };
+		2C52E10A2371F0EC0097E614 /* skyboxFT.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C52E1042371F0EB0097E614 /* skyboxFT.png */; };
+		2C52E10B2371F0EC0097E614 /* skyboxUP.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C52E1052371F0EB0097E614 /* skyboxUP.png */; };
+		2C52E10C2371F0EC0097E614 /* skyboxDN.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C52E1062371F0EB0097E614 /* skyboxDN.png */; };
+		2C52E10D2371F0EC0097E614 /* skyboxBK.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C52E1072371F0EC0097E614 /* skyboxBK.png */; };
+		2C52E10E2371F0EC0097E614 /* skyboxLF.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C52E1082371F0EC0097E614 /* skyboxLF.png */; };
+		2C52E10F2371F0EC0097E614 /* skyboxRT.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C52E1092371F0EC0097E614 /* skyboxRT.png */; };
 		2C53C308236CB216003AEC8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C53C307236CB216003AEC8C /* AppDelegate.swift */; };
 		2C53C30C236CB216003AEC8C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C53C30B236CB216003AEC8C /* GameViewController.swift */; };
 		2C53C30F236CB216003AEC8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C53C30D236CB216003AEC8C /* Main.storyboard */; };
@@ -21,7 +28,7 @@
 		2C53C31F236CB217003AEC8C /* PlanetariumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C53C31E236CB217003AEC8C /* PlanetariumTests.swift */; };
 		2C53C32A236CB218003AEC8C /* PlanetariumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C53C329236CB218003AEC8C /* PlanetariumUITests.swift */; };
 		2C53C33B236CB966003AEC8C /* earth_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C53C33A236CB966003AEC8C /* earth_texture.png */; };
-		2C53C33D236CBC10003AEC8C /* skybox.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C53C33C236CBC10003AEC8C /* skybox.jpg */; };
+		2CBD165D2370DF2D0011658E /* skybox.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CBD165C2370DF2D0011658E /* skybox.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,12 +49,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C0B83A92370B2F0004287D5 /* Planetarium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Planetarium.entitlements; sourceTree = "<group>"; };
 		2C0F343823701B530076304A /* sun_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sun_texture.jpg; sourceTree = "<group>"; };
 		2C0F343A23701F720076304A /* mars_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mars_texture.jpg; sourceTree = "<group>"; };
 		2C305A0E2370AE0F00544F9B /* pluto_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pluto_texture.png; sourceTree = "<group>"; };
 		2C305A102370AECB00544F9B /* mercury_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mercury_texture.jpg; sourceTree = "<group>"; };
 		2C305A112370AECB00544F9B /* venus_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = venus_texture.jpg; sourceTree = "<group>"; };
 		2C305A122370AECB00544F9B /* jupiter_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jupiter_texture.jpg; sourceTree = "<group>"; };
+		2C52E1022371EEC30097E614 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		2C52E1042371F0EB0097E614 /* skyboxFT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skyboxFT.png; sourceTree = "<group>"; };
+		2C52E1052371F0EB0097E614 /* skyboxUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skyboxUP.png; sourceTree = "<group>"; };
+		2C52E1062371F0EB0097E614 /* skyboxDN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skyboxDN.png; sourceTree = "<group>"; };
+		2C52E1072371F0EC0097E614 /* skyboxBK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skyboxBK.png; sourceTree = "<group>"; };
+		2C52E1082371F0EC0097E614 /* skyboxLF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skyboxLF.png; sourceTree = "<group>"; };
+		2C52E1092371F0EC0097E614 /* skyboxRT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skyboxRT.png; sourceTree = "<group>"; };
 		2C53C304236CB216003AEC8C /* Planetarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planetarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C53C307236CB216003AEC8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C53C30B236CB216003AEC8C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +77,7 @@
 		2C53C329236CB218003AEC8C /* PlanetariumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetariumUITests.swift; sourceTree = "<group>"; };
 		2C53C32B236CB218003AEC8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C53C33A236CB966003AEC8C /* earth_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earth_texture.png; sourceTree = "<group>"; };
-		2C53C33C236CBC10003AEC8C /* skybox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = skybox.jpg; sourceTree = "<group>"; };
+		2CBD165C2370DF2D0011658E /* skybox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = skybox.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +128,7 @@
 		2C53C306236CB216003AEC8C /* Planetarium */ = {
 			isa = PBXGroup;
 			children = (
+				2C0B83A92370B2F0004287D5 /* Planetarium.entitlements */,
 				2C53C337236CB896003AEC8C /* textures */,
 				2C53C307236CB216003AEC8C /* AppDelegate.swift */,
 				2C53C30B236CB216003AEC8C /* GameViewController.swift */,
@@ -145,7 +161,9 @@
 		2C53C337236CB896003AEC8C /* textures */ = {
 			isa = PBXGroup;
 			children = (
-				2C53C33C236CBC10003AEC8C /* skybox.jpg */,
+				2C52E1022371EEC30097E614 /* placeholder.png */,
+				2CBD165E2370E0330011658E /* skybox */,
+				2CBD165C2370DF2D0011658E /* skybox.jpg */,
 				2C53C33A236CB966003AEC8C /* earth_texture.png */,
 				2C0F343823701B530076304A /* sun_texture.jpg */,
 				2C0F343A23701F720076304A /* mars_texture.jpg */,
@@ -155,6 +173,19 @@
 				2C305A112370AECB00544F9B /* venus_texture.jpg */,
 			);
 			path = textures;
+			sourceTree = "<group>";
+		};
+		2CBD165E2370E0330011658E /* skybox */ = {
+			isa = PBXGroup;
+			children = (
+				2C52E1072371F0EC0097E614 /* skyboxBK.png */,
+				2C52E1062371F0EB0097E614 /* skyboxDN.png */,
+				2C52E1042371F0EB0097E614 /* skyboxFT.png */,
+				2C52E1082371F0EC0097E614 /* skyboxLF.png */,
+				2C52E1092371F0EC0097E614 /* skyboxRT.png */,
+				2C52E1052371F0EB0097E614 /* skyboxUP.png */,
+			);
+			path = skybox;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,16 +293,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C305A0F2370AE0F00544F9B /* pluto_texture.png in Resources */,
-				2C53C33D236CBC10003AEC8C /* skybox.jpg in Resources */,
+				2CBD165D2370DF2D0011658E /* skybox.jpg in Resources */,
 				2C53C314236CB217003AEC8C /* LaunchScreen.storyboard in Resources */,
 				2C53C311236CB217003AEC8C /* Assets.xcassets in Resources */,
+				2C52E10B2371F0EC0097E614 /* skyboxUP.png in Resources */,
+				2C52E10C2371F0EC0097E614 /* skyboxDN.png in Resources */,
 				2C53C33B236CB966003AEC8C /* earth_texture.png in Resources */,
 				2C305A152370AECB00544F9B /* jupiter_texture.jpg in Resources */,
 				2C0F343923701B530076304A /* sun_texture.jpg in Resources */,
 				2C53C30F236CB216003AEC8C /* Main.storyboard in Resources */,
 				2C305A142370AECB00544F9B /* venus_texture.jpg in Resources */,
+				2C52E10A2371F0EC0097E614 /* skyboxFT.png in Resources */,
+				2C52E10D2371F0EC0097E614 /* skyboxBK.png in Resources */,
+				2C52E10E2371F0EC0097E614 /* skyboxLF.png in Resources */,
+				2C52E1032371EEC30097E614 /* placeholder.png in Resources */,
 				2C0F343B23701F720076304A /* mars_texture.jpg in Resources */,
 				2C305A132370AECB00544F9B /* mercury_texture.jpg in Resources */,
+				2C52E10F2371F0EC0097E614 /* skyboxRT.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,7 +508,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Planetarium/Planetarium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = SJWSDWTP28;
 				INFOPLIST_FILE = Planetarium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -479,6 +519,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bronner.Planetarium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -488,7 +529,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Planetarium/Planetarium.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = SJWSDWTP28;
 				INFOPLIST_FILE = Planetarium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -497,6 +540,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bronner.Planetarium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
