@@ -8,6 +8,7 @@
 import UIKit
 import QuartzCore
 import SceneKit
+import os.signpost
 
 class GameViewController: UIViewController {
     
@@ -91,26 +92,19 @@ class GameViewController: UIViewController {
         sun.light!.intensity = 2000
         
         // fill the scene with some planets!
-        loadPlanets()
+        // ===!===
+        // loadPlanets(offset: 0)
+        setupTimer()
     }
     
+    let log = OSLog(subsystem: "planetarium-renderer", category: .pointsOfInterest)
+    
     // (re)loads the planets in the scene
-    func loadPlanets() {
+    func loadPlanets(offset: TimeInterval) {
+        os_signpost(.begin, log: log, name: "loadPlanets")
+
         // remove all planets that are currently in the scene - if there are any
         unloadPlanets()
-        
-        // load planetary data
-        // (ok, we don't actually load planetary data, we do this for demo reasons ;)
-        
-        // === MAIN THREAD BUG HERE ===
-//        let url = URL(string: "http://slowwly.robertomurray.co.uk/delay/5000/url/https://nssdc.gsfc.nasa.gov/planetary/factsheet/")!
-//
-//        var req = URLRequest(url: url)
-//        req.httpMethod = "GET"
-//
-//        var res: URLResponse?
-//
-//        try? NSURLConnection.sendSynchronousRequest(req, returning: &res)
 
         // create some new planets
         
@@ -118,43 +112,51 @@ class GameViewController: UIViewController {
             name: "mercury",
             radius: 0.66,
             trajectoryRadius: 4,
-            content: UIImage(named: "mercury_texture.jpg")
+            content: UIImage(named: "mercury_texture.jpg"),
+            offset: offset
         ))
         
         addPlanetToScene(Planet(
             name: "venus",
             radius: 0.9,
             trajectoryRadius: 7,
-            content: UIImage(named: "venus_texture.jpg")
+            content: UIImage(named: "venus_texture.jpg"),
+            offset: offset
         ))
         
         addPlanetToScene(Planet(
             name: "earth",
             radius: 1,
             trajectoryRadius: 10,
-            content: UIImage(named: "earth_texture.png")
+            content: UIImage(named: "earth_texture.png"),
+            offset: offset
         ))
         
         addPlanetToScene(Planet(
             name: "mars",
             radius: 0.75,
             trajectoryRadius: 15,
-            content: UIImage(named: "mars_texture.jpg")
+            content: UIImage(named: "mars_texture.jpg"),
+            offset: offset
         ))
         
         addPlanetToScene(Planet(
             name: "jupiter",
             radius: 1.5,
             trajectoryRadius: 23,
-            content: UIImage(named: "jupiter_texture.jpg")
+            content: UIImage(named: "jupiter_texture.jpg"),
+            offset: offset
         ))
         
         addPlanetToScene(Planet(
             name: "pluto",
             radius: 0.25,
             trajectoryRadius: 30,
-            content: UIImage(named: "pluto_texture.png")
+            content: UIImage(named: "pluto_texture.png"),
+            offset: offset
         ))
+        
+        os_signpost(.end, log: log, name: "loadPlanets")
     }
     
     func addPlanetToScene(_ planet: Planet) {
@@ -194,7 +196,7 @@ class GameViewController: UIViewController {
     // In our case, the planets should be reloaded when a tap is recognized.
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
-        loadPlanets()
+        // loadPlanets()
     }
     
     // Show the app in full screen
@@ -208,6 +210,15 @@ class GameViewController: UIViewController {
         } else {
             return .all
         }
+    }
+    
+    func setupTimer() {
+        let startTime = NSDate.timeIntervalSinceReferenceDate
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            let time = NSDate.timeIntervalSinceReferenceDate - startTime
+            self.loadPlanets(offset: time)
+        }
+        
     }
 
 }

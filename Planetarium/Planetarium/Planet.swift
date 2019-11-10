@@ -28,17 +28,20 @@ public class Planet {
     public let trajectoryRadius: Float
     public let content: Any?
     
+    public let offset: TimeInterval?
+    
     public var placedOnScene: Bool {
         return objects != nil
     }
     
     private var objects: SceneKitPlanetObjects?
     
-    public init(name: String, radius: Float, trajectoryRadius: Float, content: Any?) {
+    public init(name: String, radius: Float, trajectoryRadius: Float, content: Any?, offset: TimeInterval?) {
         self.name = name
         self.radius = radius
         self.trajectoryRadius = trajectoryRadius
         self.content = content
+        self.offset = offset
     }
     
     public func createAndAdd(to parent: SCNNode) {
@@ -52,9 +55,14 @@ public class Planet {
         // add them to the parent node
         parent.addChildNode(objects!.rootNode)
         
+        if offset != nil {
+            setInitialRotation()
+        }
+        
         // last but not least, configure the rotation
         // animation of the planet
-        configureAnimations()
+        // ===!===
+        // configureAnimations()
     }
     
     /// Creates the SceneKit objects for the planet and its trajectory
@@ -120,6 +128,19 @@ public class Planet {
         // That way, the planet rotates around the sun and around its own y-axis.
         objects.rotationWrapperNode.runAction(forever)
         objects.planetNode.runAction(forever)
+    }
+    
+    private func setInitialRotation() {
+        guard let offset = self.offset, let objects = self.objects else {
+            return
+        }
+        
+        let relativeOffset = (offset / Double(trajectoryRadius)).truncatingRemainder(dividingBy: 1)
+        let rotationY = Float(relativeOffset * 2 * Double.pi)
+        let angles = SCNVector3(x: 0, y: rotationY, z: 0)
+        
+        objects.planetNode.eulerAngles = angles
+        objects.rotationWrapperNode.eulerAngles = angles
     }
     
     /// Removes the planet from its parent node in the scene (if it's actually in a parent node)
