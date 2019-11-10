@@ -13,7 +13,7 @@ class GameViewController: UIViewController {
     
     private let scene = SCNScene()
     
-    private var planets: [SCNNode] = []
+    private var planets: [Planet] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,17 +112,63 @@ class GameViewController: UIViewController {
 
         // create some new planets
         
-        createPlanetWithTrajectory(name: "mercury", radius: 0.66, trajectoryRadius: 4, content: UIImage(named: "mercury_texture.jpg"))
+        addPlanetToScene(Planet(
+            name: "mercury",
+            radius: 0.66,
+            trajectoryRadius: 4,
+            content: UIImage(named: "mercury_texture.jpg")
+        ))
         
-        createPlanetWithTrajectory(name: "venus", radius: 0.9, trajectoryRadius: 7, content: UIImage(named: "venus_texture.jpg"))
+        addPlanetToScene(Planet(
+            name: "venus",
+            radius: 0.9,
+            trajectoryRadius: 7,
+            content: UIImage(named: "venus_texture.jpg")
+        ))
         
-        createPlanetWithTrajectory(name: "earth", radius: 1, trajectoryRadius: 10, content: UIImage(named: "earth_texture.png"))
+        addPlanetToScene(Planet(
+            name: "earth",
+            radius: 1,
+            trajectoryRadius: 10,
+            content: UIImage(named: "earth_texture.png")
+        ))
         
-        createPlanetWithTrajectory(name: "mars", radius: 0.75, trajectoryRadius: 15, content: UIImage(named: "mars_texture.jpg"))
+        addPlanetToScene(Planet(
+            name: "mars",
+            radius: 0.75,
+            trajectoryRadius: 15,
+            content: UIImage(named: "mars_texture.jpg")
+        ))
         
-        createPlanetWithTrajectory(name: "jupiter", radius: 1.5, trajectoryRadius: 23, content: UIImage(named: "jupiter_texture.jpg"))
+        addPlanetToScene(Planet(
+            name: "jupiter",
+            radius: 1.5,
+            trajectoryRadius: 23,
+            content: UIImage(named: "jupiter_texture.jpg")
+        ))
         
-        createPlanetWithTrajectory(name: "pluto", radius: 0.25, trajectoryRadius: 30, content: UIImage(named: "pluto_texture.png"))
+        addPlanetToScene(Planet(
+            name: "pluto",
+            radius: 0.25,
+            trajectoryRadius: 30,
+            content: UIImage(named: "pluto_texture.png")
+        ))
+    }
+    
+    func addPlanetToScene(_ planet: Planet) {
+        planets.append(planet)
+        
+        // === UNNECESSARRY PLANET RELOAD BUG HERE ===
+//        updatePlanetsInScene()
+        
+        // === BUGFIX HERE ===
+        planet.createAndAdd(to: scene.rootNode)
+    }
+    
+    func updatePlanetsInScene() {
+        for planet in planets {
+            planet.createAndAdd(to: scene.rootNode)
+        }
     }
     
     // deletes all planets in the scene
@@ -140,67 +186,6 @@ class GameViewController: UIViewController {
             planet.removeFromParentNode()
         }
         planets.removeAll()
-    }
-    
-    /// Creates and adds a new planet with its trajectory to the scene.
-    ///
-    /// - Parameters:
-    ///     - name: Name of the planet (used for the name of the corresponding SCNNode)
-    ///     - radius: Radius of the planet
-    ///     - trajectoryRadius: Radius of the planet's trajectory along the sun. The speed with which the planet circles around the sun is also calculated by this.
-    ///     - content: Texture of the planet
-    func createPlanetWithTrajectory(name: String, radius: CGFloat, trajectoryRadius: CGFloat, content: Any? = nil) {
-        // Create the planet geometry
-        let planet_shape = SCNSphere(radius: radius)
-        planet_shape.firstMaterial?.diffuse.contents = content
-        planet_shape.segmentCount = 64
-        
-        // Create the planet node
-        let planet_node = SCNNode(geometry: planet_shape)
-        
-        // Place it on its trajectory
-        planet_node.position = SCNVector3(x: 0, y: 0, z: -Float(trajectoryRadius))
-        
-        // Wrap the planet node into another node.
-        // This is needed so that the planet can later be rotated around the sun.
-        let rotation_wrapper = SCNNode()
-        rotation_wrapper.addChildNode(planet_node)
-        
-        // Create the visualization of the planet's trajectory
-        let traj_shape = SCNTube(innerRadius: trajectoryRadius - 0.05, outerRadius: trajectoryRadius, height: 0.05)
-        traj_shape.firstMaterial?.emission.contents = UIColor.white
-        traj_shape.radialSegmentCount = 64
-        
-        let traj_node = SCNNode(geometry: traj_shape)
-        traj_node.opacity = 0.25
-        
-        // Create the node that will hold both the planet and the trajectory visualization,
-        // then place it on the scene
-        let planet_with_trajectory = SCNNode()
-        planet_with_trajectory.name = name
-        planet_with_trajectory.addChildNode(rotation_wrapper)
-        planet_with_trajectory.addChildNode(traj_node)
-        scene.rootNode.addChildNode(planet_with_trajectory)
-        
-        // Add the planet to the planet list so that it can be easily accessed later
-        planets.append(planet_with_trajectory)
-        
-        // Configure and start the rotation animation
-        rotatePlanet(wrapper: rotation_wrapper, planet: planet_node, time: TimeInterval(trajectoryRadius))
-    }
-    
-    /// Configures and starts a new planet's rotation animation
-    func rotatePlanet(wrapper: SCNNode, planet: SCNNode, time: TimeInterval) {
-        // This is the animation action
-        let rotate = SCNAction.rotateBy(x: 0, y: 2 * CGFloat.pi, z: 0, duration: time)
-        rotate.timingMode = .linear
-        // Configure the rotation to be repeated indefinitiely
-        let forever = SCNAction.repeatForever(rotate)
-        
-        // Then apply the action to both the wrapper and the planet.
-        // That way, the planet rotates around the sun and around its own y-axis.
-        wrapper.runAction(forever)
-        planet.runAction(forever)
     }
     
     // handles the tap gesture.

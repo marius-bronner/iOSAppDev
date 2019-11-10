@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C0F343923701B530076304A /* sun_texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C0F343823701B530076304A /* sun_texture.jpg */; };
 		2C0F343B23701F720076304A /* mars_texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C0F343A23701F720076304A /* mars_texture.jpg */; };
+		2C2BDB63237833990007F5AC /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2BDB62237833990007F5AC /* Planet.swift */; };
 		2C305A0F2370AE0F00544F9B /* pluto_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C305A0E2370AE0F00544F9B /* pluto_texture.png */; };
 		2C305A132370AECB00544F9B /* mercury_texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C305A102370AECB00544F9B /* mercury_texture.jpg */; };
 		2C305A142370AECB00544F9B /* venus_texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C305A112370AECB00544F9B /* venus_texture.jpg */; };
@@ -52,6 +53,7 @@
 		2C0B83A92370B2F0004287D5 /* Planetarium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Planetarium.entitlements; sourceTree = "<group>"; };
 		2C0F343823701B530076304A /* sun_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sun_texture.jpg; sourceTree = "<group>"; };
 		2C0F343A23701F720076304A /* mars_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mars_texture.jpg; sourceTree = "<group>"; };
+		2C2BDB62237833990007F5AC /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		2C305A0E2370AE0F00544F9B /* pluto_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pluto_texture.png; sourceTree = "<group>"; };
 		2C305A102370AECB00544F9B /* mercury_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mercury_texture.jpg; sourceTree = "<group>"; };
 		2C305A112370AECB00544F9B /* venus_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = venus_texture.jpg; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				2C53C310236CB217003AEC8C /* Assets.xcassets */,
 				2C53C312236CB217003AEC8C /* LaunchScreen.storyboard */,
 				2C53C315236CB217003AEC8C /* Info.plist */,
+				2C2BDB62237833990007F5AC /* Planet.swift */,
 			);
 			path = Planetarium;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C2BDB63237833990007F5AC /* Planet.swift in Sources */,
 				2C53C30C236CB216003AEC8C /* GameViewController.swift in Sources */,
 				2C53C308236CB216003AEC8C /* AppDelegate.swift in Sources */,
 			);
