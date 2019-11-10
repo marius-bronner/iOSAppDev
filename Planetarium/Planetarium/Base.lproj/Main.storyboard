@@ -1,22 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <sceneKitView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    </sceneKitView>
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Planetarium" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cft-kD-Aqx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="MSk-1z-alh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </sceneKitView>
+                            <visualEffectView opaque="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="SuZ-SS-wVh">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LkX-zx-RZB">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MqB-8m-pkP">
+                                            <rect key="frame" x="40" y="54" width="160.5" height="20.5"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="B4X-Gw-f9C">
+                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading planets..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XU-th-TOk">
+                                                    <rect key="frame" x="25" y="0.0" width="135.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MqB-8m-pkP" firstAttribute="centerY" secondItem="LkX-zx-RZB" secondAttribute="centerY" id="Dqd-nU-lP9"/>
+                                        <constraint firstItem="MqB-8m-pkP" firstAttribute="centerX" secondItem="LkX-zx-RZB" secondAttribute="centerX" id="hZL-6d-XIw"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SuZ-SS-wVh" firstAttribute="top" secondItem="AVX-q3-YdR" secondAttribute="top" constant="340" id="FoY-CK-v7j"/>
+                            <constraint firstItem="SuZ-SS-wVh" firstAttribute="leading" secondItem="AVX-q3-YdR" secondAttribute="leading" constant="87" id="fJw-dQ-pdZ"/>
+                            <constraint firstItem="SuZ-SS-wVh" firstAttribute="centerY" secondItem="Cft-kD-Aqx" secondAttribute="centerY" id="fWR-vy-t91"/>
+                            <constraint firstItem="SuZ-SS-wVh" firstAttribute="centerX" secondItem="Cft-kD-Aqx" secondAttribute="centerX" id="vZ7-AM-8WE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AVX-q3-YdR"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="SuZ-SS-wVh"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="loader" destination="SuZ-SS-wVh" id="hbt-Nd-8L8"/>
+                        <outlet property="scnView" destination="MSk-1z-alh" id="XOd-c8-2b6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="131"/>
         </scene>
     </scenes>
 </document>

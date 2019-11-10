@@ -11,6 +11,9 @@ import SceneKit
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var loader: UIVisualEffectView!
+    @IBOutlet weak var scnView: SCNView!
+
     private let scene = SCNScene()
     
     private var planets: [Planet] = []
@@ -51,8 +54,7 @@ class GameViewController: UIViewController {
         ambientLightNode.light!.intensity = 250
         scene.rootNode.addChildNode(ambientLightNode)
         
-        // retrieve the SCNView
-        let scnView = self.view as! SCNView
+        // configure the SCNView
         scnView.antialiasingMode = .multisampling4X
         
         // set the scene to the view
