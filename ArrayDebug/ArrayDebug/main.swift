@@ -14,6 +14,7 @@ func sayHi() {
 
 var array = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
+//We want to delete the element after the defined index
 var index = 4
 
 while index < array.count {
