@@ -94,6 +94,7 @@ class GameViewController: UIViewController {
         // fill the scene with some planets!
         // ===!===
         // loadPlanets(offset: 0)
+        // comment the line below!
         setupTimer()
     }
     
